@@ -1,0 +1,32 @@
+<resources>
+	// Principal texts
+    <string name="app_name" translatable="false">Nautilus</string>
+    <string name="txt_MenuTitle">Interesting points</string>
+
+	//Card Titles
+    <string name="cardTitle1">Introduction</string>
+    <string name="cardTitle2">Puntos de interes</string>
+    <string name="cardTitle3">Puntos de interes</string>
+    <string name="cardTitle4">Puntos de interes</string>
+    <string name="cardTitle5">Puntos de interes</string>
+    <string name="cardTitle6">Puntos de interes</string>
+    <string name="cardTitle7">Puntos de interes</string>
+    <string name="cardTitle8">Puntos de interes</string>
+    <string name="cardTitle9">Puntos de interes</string>
+    <string name="cardTitle10">Puntos de interes</string>
+    <string name="cardTitle11">Puntos de interes</string>
+
+	//Card Description
+    <string name="cardDescription1">carddescription1</string>
+    <string name="cardDescription2">carddescription2</string>
+    <string name="cardDescription3">carddescription3</string>
+    <string name="cardDescription4">carddescription4</string>
+    <string name="cardDescription5">carddescription5</string>
+    <string name="cardDescription6">carddescription6</string>
+    <string name="cardDescription7">carddescription7</string>
+    <string name="cardDescription8">carddescription8</string>
+    <string name="cardDescription9">carddescription9</string>
+    <string name="cardDescription10">carddescription10</string>
+    <string name="cardDescription11">carddescription11</string>
+
+</resources>
