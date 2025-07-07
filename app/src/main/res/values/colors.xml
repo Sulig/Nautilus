@@ -3,5 +3,12 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#00000000</color>
+
+    <color name="buttoncolor">#40034B94</color>
+
+    <color name="primary">#FF0D2D53</color>
+    <color name="secondary">#F4D90D</color>
     <color name="titlefontcolor">#FF0D2D53</color>
+    <color name="subtitlefontcolor">#034B94</color>
+
 </resources>
