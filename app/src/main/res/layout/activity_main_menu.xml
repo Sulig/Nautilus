@@ -14,7 +14,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="100dp"
         android:fontFamily="sans-serif"
-        android:text="@string/txt_MenuTitle"
+        android:text="@string/txtMenuTitle"
         android:textAlignment="viewStart"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/titlefontcolor"

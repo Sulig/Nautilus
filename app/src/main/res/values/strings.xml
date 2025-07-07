@@ -1,9 +1,13 @@
 <resources>
-	// Principal texts
+    <!-- Principal texts -->
     <string name="app_name" translatable="false">Nautilus</string>
-    <string name="txt_MenuTitle">Interesting points</string>
+    <string name="txtMenuTitle">Interesting points</string>
 
-	//Card Titles
+    <!-- Buttons -->
+    <string name="btnEntry">Entry</string>
+    <string name="btnExit">Exit</string>
+
+    <!-- Card Titles -->
     <string name="cardTitle1">Introduction</string>
     <string name="cardTitle2">Puntos de interes</string>
     <string name="cardTitle3">Puntos de interes</string>
@@ -16,7 +20,7 @@
     <string name="cardTitle10">Puntos de interes</string>
     <string name="cardTitle11">Puntos de interes</string>
 
-	//Card Description
+    <!-- Card Description -->
     <string name="cardDescription1">carddescription1</string>
     <string name="cardDescription2">carddescription2</string>
     <string name="cardDescription3">carddescription3</string>
