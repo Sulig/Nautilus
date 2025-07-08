@@ -7,6 +7,7 @@
     <!-- Buttons -->
     <string name="btnEntry">Entry</string>
     <string name="btnExit">Exit</string>
+    <string name="btnTalk">Read aloud</string>
 
     <!-- Card Titles -->
     <string name="cardTitle1">Introduction</string>

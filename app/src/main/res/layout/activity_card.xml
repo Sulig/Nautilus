@@ -149,7 +149,7 @@
             android:fontFamily="sans-serif"
             android:paddingHorizontal="50dp"
             android:paddingVertical="8dp"
-            android:text="talk"
+            android:text="@string/btnTalk"
             android:textAlignment="textStart"
             android:textSize="24sp"
             android:typeface="normal"

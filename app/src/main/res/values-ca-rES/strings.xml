@@ -6,6 +6,7 @@
     <!-- Buttons -->
     <string name="btnEntry">Entrar</string>
     <string name="btnExit">Sortir</string>
+    <string name="btnTalk">Llegir en veu alta</string>
 
     <!-- Card Titles -->
     <string name="cardTitle1">Introducció</string>
