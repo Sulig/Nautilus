@@ -1,15 +1,90 @@
 package com.nautilus
 
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.ConfigurationCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import java.util.Locale
 
-class Card : AppCompatActivity() {
+class Card : AppCompatActivity(), TextToSpeech.OnInitListener {
+    //TextToSpeech - \Teacher code -- and Gemini help
+    private var tts: TextToSpeech? = null
+    private lateinit var txtSpeachable: TextView
+    private var isTtsInitialized = false
+
+    override fun onInit(status: Int)
+    {
+        if (status == TextToSpeech.SUCCESS)
+        {
+            val currentDeviceLocale = ConfigurationCompat.getLocales(resources.configuration).get(0)
+            var selectedLocale: Locale? = null
+            var languageSupported = false
+
+            if (currentDeviceLocale != null)
+            {
+                // Detect current system language and set TTS language accordingly
+                when (currentDeviceLocale.language) {
+                    "en" -> {
+                        selectedLocale = Locale.ENGLISH
+                        languageSupported = true
+                    }
+
+                    "es" -> {
+                        selectedLocale = Locale("es", "ES")
+                        languageSupported = true
+                    }
+
+                    "ca" -> {
+                        selectedLocale = Locale("ca", "ES")
+                        languageSupported = true
+                    }
+
+                    else -> {
+                        /**
+                         * If the current device language is not supported,
+                         *  use Spanish as a fallback.
+                         */
+                        selectedLocale = Locale("es", "ES")
+                        Toast.makeText(
+                            this,
+                            getString(R.string.tts1),
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                }
+            }
+            /* If the current device language is not supported, use Spanish as a fallback. */
+            else {
+                selectedLocale = Locale("es", "ES")
+                Toast.makeText(this, getString(R.string.tts1), Toast.LENGTH_LONG).show()
+            }
+            //***********
+            /*** */
+            if (selectedLocale != null) {
+                val result = tts?.setLanguage(selectedLocale)
+                if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                    isTtsInitialized = false
+                    Log.e("TTS", getString(R.string.tts2))
+                    Toast.makeText(this, getString(R.string.tts2), Toast.LENGTH_LONG).show()
+                } else
+                    isTtsInitialized = true
+            }
+            else {
+                isTtsInitialized = false
+                Log.e("TTS", getString(R.string.tts3))
+                Toast.makeText(this, getString(R.string.tts3), Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+    /***************/
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -26,8 +101,9 @@ class Card : AppCompatActivity() {
         }
         /**-----------*/
 
+        txtSpeachable = findViewById(R.id.txtCardDes)
         val txtCardTitle = findViewById<TextView>(R.id.txtCardTitle)
-        val txtCardDes = findViewById<TextView>(R.id.txtCardDes)
+        val txtCardDes = txtSpeachable
         val imgCardNum = findViewById<ImageView>(R.id.imgCardNum)
         val imgCard = findViewById<ImageView>(R.id.imgCard)
 
@@ -109,6 +185,42 @@ class Card : AppCompatActivity() {
                 imgCardNum.setImageResource(R.drawable.numero11)
                 imgCard.setImageResource(R.drawable.img11_cierre)
             }
+            "btn" -> {
+                txtCardTitle.text = getString(R.string.cardTitle)
+                txtCardDes.text = getString(R.string.cardDescription)
+                imgCardNum.setImageResource(R.drawable.icon)
+                imgCard.setImageResource(R.drawable.qrcode)
+            }
         }
+        //**************************************************/
+
+        /** Text to speech **/
+        tts = TextToSpeech(this, this)
+        val btnTalk = findViewById<Button>(R.id.btnTalk)
+        btnTalk.setOnClickListener {
+            talk()
+        }
+    }
+    /** Text to speech **/
+    private fun talk() {
+        if (!isTtsInitialized) {
+            Toast.makeText(this, getString(R.string.tts4), Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val message: String = txtSpeachable.text.toString()
+        if (message.isNotEmpty()) {
+            tts?.speak(message, TextToSpeech.QUEUE_FLUSH, null, "")
+        } else {
+            Toast.makeText(this, getString(R.string.tts3), Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    override fun onDestroy() {
+        if (tts != null) {
+            tts!!.stop()
+            tts!!.shutdown()
+        }
+        super.onDestroy()
     }
 }
