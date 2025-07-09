@@ -151,6 +151,7 @@
             android:paddingVertical="8dp"
             android:text="@string/btnTalk"
             android:textAlignment="textStart"
+            android:textColor="@color/white"
             android:textSize="24sp"
             android:typeface="normal"
             app:cornerRadius="8dp"
